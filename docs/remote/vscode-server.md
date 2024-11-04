@@ -117,3 +117,40 @@ Settings Sync requires authentication against a Settings Sync server. The corres
 If you have any issues or feedback, please file an issue in the [VS Code Remote GitHub repo](https://github.com/microsoft/vscode-remote-release/issues). When filing an issue, include verbose logging, which you can enable by launching the VS Code Server with the `-v` flag: `code -v tunnel`.
 
 You may filter just for VS Code Server issues with the [`code-server` label](https://github.com/microsoft/vscode-remote-release/issues?q=is%3Aissue+is%3Aopen+label%3Acode-server).
+<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>GitHub Authentication - Sign In</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="auth.css" />
+</head>
+
+<body>
+	<a class="branding" href="https://code.visualstudio.com/">
+		Visual Studio Code
+	</a>
+	<div class="message-container">
+		<div class="message">
+			You are signed in now and can close this page.
+		</div>
+		<div class="error-message">
+			An error occurred while signing in:
+			<div class="error-text"></div>
+		</div>
+	</div>
+	<script>
+		var search = window.location.search;
+		var error = (/[?&^]error=([^&]+)/.exec(search) || [])[1];
+		if (error) {
+			document.querySelector('.error-text')
+				.textContent = decodeURIComponent(error);
+			document.querySelector('body')
+				.classList.add('error');
+		}
+	</script>
+</body>
+
+</html>
